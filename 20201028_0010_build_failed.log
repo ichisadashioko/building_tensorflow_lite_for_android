@@ -1,0 +1,89 @@
+root@a65d0bc542e4:/tensorflow_src# bazel build -c opt --fat_apk_cpu=x86,x86_64,arm64-v8a,armeabi-v7a \
+>   --host_crosstool_top=@bazel_tools//tools/cpp:toolchain \
+>   //tensorflow/lite/java:tensorflow-lite
+Starting local Bazel server and connecting to it...
+INFO: Options provided by the client:
+  Inherited 'common' options: --isatty=1 --terminal_columns=147
+INFO: Reading rc options for 'build' from /tensorflow_src/.bazelrc:
+  Inherited 'common' options: --experimental_repo_remote_exec
+INFO: Reading rc options for 'build' from /tensorflow_src/.bazelrc:
+  'build' options: --apple_platform_type=macos --define framework_shared_object=true --define open_source_build=true --java_toolchain=//third_party/toolchains/java:tf_java_toolchain --host_java_toolchain=//third_party/toolchains/java:tf_java_toolchain --define=use_fast_cpp_protos=true --define=allow_oversize_protos=true --spawn_strategy=standalone -c opt --announce_rc --define=grpc_no_ares=true --noincompatible_remove_legacy_whole_archive --noincompatible_prohibit_aapt1 --enable_platform_specific_config --config=v2
+INFO: Found applicable config definition build:v2 in file /tensorflow_src/.bazelrc: --define=tf_api_version=2 --action_env=TF2_BEHAVIOR=1
+INFO: Found applicable config definition build:linux in file /tensorflow_src/.bazelrc: --copt=-w --define=PREFIX=/usr --define=LIBDIR=$(PREFIX)/lib --define=INCLUDEDIR=$(PREFIX)/include --cxxopt=-std=c++14 --host_cxxopt=-std=c++14 --config=dynamic_kernels
+INFO: Found applicable config definition build:dynamic_kernels in file /tensorflow_src/.bazelrc: --define=dynamic_loaded_kernels=true --copt=-DAUTOLOAD_DYNAMIC_KERNELS
+Internal error thrown during build. Printing stack trace: java.lang.RuntimeException: Unrecoverable error while evaluating node '@bazel_tools//src/tools/android/java/com/google/devtools/build/android/incrementaldeployment:incremental_stub_application BuildConfigurationValue.Key[b6c0f68614aefb61c49685ba6348794d44e10cfae2a002fe64ee70c671a75afd] false' (requested by nodes '@bazel_tools//tools/android:incremental_stub_application BuildConfigurationValue.Key[b6c0f68614aefb61c49685ba6348794d44e10cfae2a002fe64ee70c671a75afd] false')
+        at com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run(AbstractParallelEvaluator.java:515)
+        at com.google.devtools.build.lib.concurrent.AbstractQueueVisitor$WrappedRunnable.run(AbstractQueueVisitor.java:399)
+        at java.base/java.util.concurrent.ForkJoinTask$AdaptedRunnableAction.exec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+        at com.google.devtools.build.lib.rules.android.BusyBoxActionBuilder.addAapt(BusyBoxActionBuilder.java:315)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.createAapt2ApkAction(AndroidResourcesProcessorBuilder.java:279)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.build(AndroidResourcesProcessorBuilder.java:208)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.buildWithoutLocalResources(AndroidResourcesProcessorBuilder.java:179)
+        at com.google.devtools.build.lib.rules.android.ResourceApk.processFromTransitiveLibraryData(ResourceApk.java:328)
+        at com.google.devtools.build.lib.rules.android.AndroidLibrary.create(AndroidLibrary.java:178)
+        at com.google.devtools.build.lib.rules.android.AndroidLibrary.create(AndroidLibrary.java:42)
+        at com.google.devtools.build.lib.analysis.ConfiguredTargetFactory.createRule(ConfiguredTargetFactory.java:484)
+        at com.google.devtools.build.lib.analysis.ConfiguredTargetFactory.createConfiguredTarget(ConfiguredTargetFactory.java:190)
+        at com.google.devtools.build.lib.skyframe.SkyframeBuildView.createConfiguredTarget(SkyframeBuildView.java:888)
+        at com.google.devtools.build.lib.skyframe.ConfiguredTargetFunction.createConfiguredTarget(ConfiguredTargetFunction.java:899)
+        at com.google.devtools.build.lib.skyframe.ConfiguredTargetFunction.compute(ConfiguredTargetFunction.java:338)
+        at com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run(AbstractParallelEvaluator.java:438)
+        ... 7 more
+
+INFO: Elapsed time: 5.899s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (53 packages loaded, 848 targets configured)
+Internal error thrown during build. Printing stack trace: java.lang.RuntimeException: Unrecoverable error while evaluating node '@bazel_tools//src/tools/android/java/com/google/devtools/build/android/incrementaldeployment:incremental_stub_application BuildConfigurationValue.Key[b6c0f68614aefb61c49685ba6348794d44e10cfae2a002fe64ee70c671a75afd] false' (requested by nodes '@bazel_tools//tools/android:incremental_stub_application BuildConfigurationValue.Key[b6c0f68614aefb61c49685ba6348794d44e10cfae2a002fe64ee70c671a75afd] false')
+        at com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run(AbstractParallelEvaluator.java:515)
+        at com.google.devtools.build.lib.concurrent.AbstractQueueVisitor$WrappedRunnable.run(AbstractQueueVisitor.java:399)
+        at java.base/java.util.concurrent.ForkJoinTask$AdaptedRunnableAction.exec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+        at com.google.devtools.build.lib.rules.android.BusyBoxActionBuilder.addAapt(BusyBoxActionBuilder.java:315)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.createAapt2ApkAction(AndroidResourcesProcessorBuilder.java:279)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.build(AndroidResourcesProcessorBuilder.java:208)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.buildWithoutLocalResources(AndroidResourcesProcessorBuilder.java:179)
+        at com.google.devtools.build.lib.rules.android.ResourceApk.processFromTransitiveLibraryData(ResourceApk.java:328)
+        at com.google.devtools.build.lib.rules.android.AndroidLibrary.create(AndroidLibrary.java:178)
+        at com.google.devtools.build.lib.rules.android.AndroidLibrary.create(AndroidLibrary.java:42)
+        at com.google.devtools.build.lib.analysis.ConfiguredTargetFactory.createRule(ConfiguredTargetFactory.java:484)
+        at com.google.devtools.build.lib.analysis.ConfiguredTargetFactory.createConfiguredTarget(ConfiguredTargetFactory.java:190)
+        at com.google.devtools.build.lib.skyframe.SkyframeBuildView.createConfiguredTarget(SkyframeBuildView.java:888)
+        at com.google.devtools.build.lib.skyframe.ConfiguredTargetFunction.createConfiguredTarget(ConfiguredTargetFunction.java:899)
+        at com.google.devtools.build.lib.skyframe.ConfiguredTargetFunction.compute(ConfiguredTargetFunction.java:338)
+        at com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run(AbstractParallelEvaluator.java:438)
+        ... 7 more
+java.lang.RuntimeException: Unrecoverable error while evaluating node '@bazel_tools//src/tools/android/java/com/google/devtools/build/android/incrementaldeployment:incremental_stub_application BuildConfigurationValue.Key[b6c0f68614aefb61c49685ba6348794d44e10cfae2a002fe64ee70c671a75afd] false' (requested by nodes '@bazel_tools//tools/android:incremental_stub_application BuildConfigurationValue.Key[b6c0f68614aefb61c49685ba6348794d44e10cfae2a002fe64ee70c671a75afd] false')
+        at com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run(AbstractParallelEvaluator.java:515)
+        at com.google.devtools.build.lib.concurrent.AbstractQueueVisitor$WrappedRunnable.run(AbstractQueueVisitor.java:399)
+        at java.base/java.util.concurrent.ForkJoinTask$AdaptedRunnableAction.exec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+        at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+        at com.google.devtools.build.lib.rules.android.BusyBoxActionBuilder.addAapt(BusyBoxActionBuilder.java:315)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.createAapt2ApkAction(AndroidResourcesProcessorBuilder.java:279)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.build(AndroidResourcesProcessorBuilder.java:208)
+        at com.google.devtools.build.lib.rules.android.AndroidResourcesProcessorBuilder.buildWithoutLocalResources(AndroidResourcesProcessorBuilder.java:179)
+        at com.google.devtools.build.lib.rules.android.ResourceApk.processFromTransitiveLibraryData(ResourceApk.java:328)
+        at com.google.devtools.build.lib.rules.android.AndroidLibrary.create(AndroidLibrary.java:178)
+        at com.google.devtools.build.lib.rules.android.AndroidLibrary.create(AndroidLibrary.java:42)
+        at com.google.devtools.build.lib.analysis.ConfiguredTargetFactory.createRule(ConfiguredTargetFactory.java:484)
+        at com.google.devtools.build.lib.analysis.ConfiguredTargetFactory.createConfiguredTarget(ConfiguredTargetFactory.java:190)
+        at com.google.devtools.build.lib.skyframe.SkyframeBuildView.createConfiguredTarget(SkyframeBuildView.java:888)
+        at com.google.devtools.build.lib.skyframe.ConfiguredTargetFunction.createConfiguredTarget(ConfiguredTargetFunction.java:899)
+        at com.google.devtools.build.lib.skyframe.ConfiguredTargetFunction.compute(ConfiguredTargetFunction.java:338)
+        at com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run(AbstractParallelEvaluator.java:438)
+FAILED: Build did NOT complete successfully (53 packages loaded, 848 targets configured)

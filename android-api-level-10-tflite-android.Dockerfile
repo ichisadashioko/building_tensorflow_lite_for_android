@@ -6,6 +6,7 @@ RUN mkdir -p ${ANDROID_DEV_HOME}
 # Install Android SDK.
 ENV ANDROID_SDK_FILENAME tools_r25.2.5-linux.zip
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/${ANDROID_SDK_FILENAME}
+# I wanted to build tensorflow lite for android 2.3 (API level 10)
 ENV ANDROID_API_LEVEL 10
 ENV ANDROID_NDK_API_LEVEL 18
 # Build Tools Version liable to change.
